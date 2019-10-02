@@ -14,8 +14,8 @@ combinedUri = combinedUri + "&type=" + type;
 combinedUri = combinedUri + "&limit=" + limit;
 combinedUri = combinedUri + "&format=json"; //we always want JSON back...
 
-function search(stores,item, fullfill, reject) {
-  let = map_items_to_ids = stores.map_items_to_ids
+function search(stores, item, fullfill, reject) {
+  let map = stores.map_item_to_id;
   combinedUri = combinedUri + "&search=" + encodeURIComponent(item);
 
   let requestOptions = {
@@ -26,16 +26,15 @@ function search(stores,item, fullfill, reject) {
 
   rp(requestOptions)
     .then(function(response) {
-      let id = response["search"][0]["id"]
+      let id = response["search"][0]["id"];
       console.log(id);
-      map_items_to_ids.set(item,id)
+      map.set(item, id);
       fullfill();
     })
     .catch(function(err) {
       // API call failed...
       reject(err);
     });
-    
 }
 
 module.exports = search;
