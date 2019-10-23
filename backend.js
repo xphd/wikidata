@@ -1,3 +1,6 @@
+const fs = require('fs')
+const csvjson = require("csvjson")
+
 const stores = {
   items: null,
   map_item_to_id: new Map(), // results from task 1
@@ -11,23 +14,26 @@ const stores = {
 
 // read csv file, get a list of name/item for wiki-search
 
-// const csvFilePath = "imdb_10.csv";
-// let col_selected = "title";
+// let isDev = false
+let isDev = true
+
+let items = ["The Dark Knight", "Pulp Fiction"];
 
 // get names for search from the csv file
-let items = ["The Godfather", "Pulp Fiction"];
-// let items = []
-
-// let data = fs.readFileSync(csvFilePath, { encoding: 'utf8' })
-// let options = {
-//     delimiter: ',', // optional
-//     quote: '"' // optional
-// };
-// let objs = csvjson.toObject(data, options);
-// objs.forEach(obj => {
-//     let col_name = obj[col_selected]
-//     items.push(col_name)
-// })
+if (!isDev) {
+  const csvFilePath = "imdb_10.csv";
+  let col_selected = "title";
+  let data = fs.readFileSync(csvFilePath, { encoding: 'utf8' })
+  let options = {
+    delimiter: ',', // optional
+    quote: '"' // optional
+  };
+  let objs = csvjson.toObject(data, options);
+  objs.forEach(obj => {
+    let col_name = obj[col_selected]
+    items.push(col_name)
+  })
+}
 
 stores.items = items;
 
@@ -56,9 +62,9 @@ async function go() {
 
   // console.log(stores.map_propertyId_to_entityIds);
 
-  console.log("Task 4 begin");
-  task4.expand(stores)
-  console.log("Task 4 end");
+  // console.log("Task 4 begin");
+  // task4.expand(stores)
+  // console.log("Task 4 end");
 }
 
 // grab all infor from wikidata about each item, if
