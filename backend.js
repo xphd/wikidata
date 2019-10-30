@@ -1,11 +1,16 @@
 const fs = require("fs");
 const csvjson = require("csvjson");
 
+// central, hub, bus, shared variables
 const stores = {
-  items: null,
-  key_word: "film",
+  items: null, // names used in wikidata search
+
+  key_word: "film", // could be used to filter searching results
+
   map_item_to_id: new Map(), // results from task 1
+
   map_id_to_entity: new Map(), // results from task 2
+
   map_propertyId_to_entityIds: new Map() // results from task 3
 };
 
@@ -16,15 +21,16 @@ const stores = {
 // read csv file, get a list of name/item for wiki-search
 
 // let isDev = false
-let isDev = true;
+let isDev = true; // if true, in development mode. items will be hardcoded
 
 let items = ["The Dark Knight", "Pulp Fiction", "The Shawshank Redemption"];
 // let items = ["Pulp Fiction"];
 
-// get names for search from the csv file
+// get names for search from the csv file. executed when isDev is false
 if (!isDev) {
-  const csvFilePath = "imdb_10.csv";
-  let col_selected = "title";
+  const csvFilePath = "imdb_10.csv"; // this should be from somewhere, rather than hardcoded
+  let col_selected = "title"; // should be from user's choice
+
   let data = fs.readFileSync(csvFilePath, { encoding: "utf8" });
   let options = {
     delimiter: ",", // optional

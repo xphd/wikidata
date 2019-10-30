@@ -1,3 +1,4 @@
+// convert wikidata entity to json object.
 function entityToObjs(stores) {
   let map_id_to_entity = stores.map_id_to_entity;
   let map_propertyId_to_entityIds = stores.map_propertyId_to_entityIds;

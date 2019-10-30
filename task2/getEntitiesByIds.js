@@ -1,3 +1,6 @@
+// get entity by id from wikidata. This will fetch everything for the id in wikidata
+
+// NOTE: there seem to be a limit of number of ids like 200?
 import { getEntities } from "wiki-entity";
 
 function getEntitiesByIds(stores) {
@@ -21,6 +24,3 @@ function getEntitiesByIds(stores) {
   return promise;
 }
 module.exports = getEntitiesByIds;
-
-
-

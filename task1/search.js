@@ -12,13 +12,29 @@ function search(stores, item, fullfill, reject) {
   let key_word = stores.key_word;
   let map = stores.map_item_to_id;
 
-  let combinedUri = "https://" + apiHost + apiPath;
-  combinedUri = combinedUri + "?action=" + searchAction;
-  combinedUri = combinedUri + "&language=" + language;
-  combinedUri = combinedUri + "&type=" + type;
-  combinedUri = combinedUri + "&limit=" + limit;
-  combinedUri = combinedUri + "&format=json"; //we always want JSON back...
-  combinedUri = combinedUri + "&search=" + encodeURIComponent(item);
+  let combinedUri =
+    "https://" +
+    apiHost +
+    apiPath +
+    "?action=" +
+    searchAction +
+    "&language=" +
+    language +
+    "&type=" +
+    type +
+    "&limit=" +
+    limit +
+    "&format=json" +
+    "&search=" +
+    encodeURIComponent(item);
+
+  // combinedUri = combinedUri + "?action=" + searchAction;
+  // combinedUri = combinedUri + "&language=" + language;
+  // combinedUri = combinedUri + "&type=" + type;
+  // combinedUri = combinedUri + "&limit=" + limit;
+  // combinedUri = combinedUri + "&format=json"; //we always want JSON back...
+  // combinedUri = combinedUri + "&search=" + encodeURIComponent(item);
+
   console.log(combinedUri);
   let requestOptions = {
     uri: combinedUri,

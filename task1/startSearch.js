@@ -1,3 +1,5 @@
+// create a chain of promise, each of which sends a request to wikidata to search the item
+
 const search = require("./search.js");
 function startSearch(stores) {
   let items = stores.items;
